@@ -1,0 +1,26 @@
+{
+"window.zoomLevel": 1.2,
+"editor.fontFamily": "JetBrains Mono",
+"editor.fontSize": 14,
+"editor.lineHeight": 1.8,
+"workbench.startupEditor": "newUntitledFile",
+"editor.renderLineHighlight": "gutter",
+"workbench.editor.labelFormat": "short",
+"explorer.compactFolders": false,
+"python.linting.mypyEnabled": true,
+"python.testing.unittestEnabled": false,
+"python.testing.pytestEnabled": true,
+"python.analysis.diagnosticSeverityOverrides": {
+    "reportUnknownMemberType": "none",
+    "reportUnknownArgumentType": "none",
+    "reportUnknownVariableType": "none",
+    "reportUnknownLambdaType": "none",
+    "reportUnknownParameterType": "none"
+},
+// "python.defaultInterpreterPath": "./venv/bin/python",
+"python.analysis.typeCheckingMode": "basic",
+"cSpell.enabled": true
+}
+
+
+
