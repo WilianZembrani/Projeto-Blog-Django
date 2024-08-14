@@ -1,3 +1,4 @@
+from typing import Any
 from django.contrib import admin
 from blog.models import Tag, Category, Page, Post
 
@@ -52,3 +53,11 @@ class PostAdmin(admin.ModelAdmin):
         "slug": ('title',),
     }
     autocomplete_fields = 'tags', 'category',
+
+    def save_model(self, request, obj, form, change):
+        if change:
+            obj.updated_by = request.user
+        else: 
+            obj.created_by = request.user
+        
+        obj.save()
