@@ -82,6 +82,7 @@ class Post(models.Model):
         unique=True, default='',
         null=False, blank=True, max_length=255
     )
+    excerpt = models.CharField(max_length=255, default="default_value")
 
     is_published = models.BooleanField(
     default=False,
@@ -100,6 +101,7 @@ class Post(models.Model):
         blank=True, null=True, 
         related_name='post_created_by'
     )
+
     updated_at = models.DateTimeField(auto_now=True)
     updated_by = models.ForeignKey(
         User,
