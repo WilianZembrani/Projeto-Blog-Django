@@ -72,17 +72,24 @@ class Page(models.Model):
     def __str__(self) -> str:
         return self.title
     
+
+class PostManager(models.Manager):
+    def get_published(self):
+        return self.filter(is_published=True) .order_by('-pk')
+
 class Post(models.Model):
     class Meta:
         verbose_name = 'Post'
         verbose_name_plural = 'Posts'
+
+    objects = PostManager()
 
     title = models.CharField(max_length=60)
     slug = models.SlugField(
         unique=True, default='',
         null=False, blank=True, max_length=255
     )
-    excerpt = models.CharField(max_length=255, default="default_value")
+    excerpt = models.CharField(max_length=255, null=True)
 
     is_published = models.BooleanField(
     default=False,
