@@ -25,8 +25,8 @@
 --clr-gray-dkst: var(--_clr-gray) 10%;
 
 /* Font-family */
---ff-regular: Georgia, 'Times New Roman', Times, serif;
---ff-headings: Georgia, 'Times New Roman', Times, serif;
+--ff-regular: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+--ff-headings: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 --ff-mono: 'Courier New', Courier, monospace;
 
 /* Font-Sizes */
@@ -72,6 +72,7 @@
 /* Base */
 html {
 font-size: 62.5%;
+
 }
 
 body {
