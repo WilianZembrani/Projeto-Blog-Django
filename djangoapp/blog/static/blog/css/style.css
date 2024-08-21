@@ -207,6 +207,10 @@ padding: var(--spacing-base);
 padding-bottom: var(--spacing-base);
 }
 
+.mg-base{
+    margin-top: var(--spacing-base);
+}
+
 .center {
 text-align: center;
 }
