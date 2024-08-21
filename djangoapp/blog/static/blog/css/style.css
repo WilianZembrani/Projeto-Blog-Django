@@ -27,7 +27,7 @@
 /* Font-family */
 --ff-regular: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 --ff-headings: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
---ff-mono: 'Courier New', Courier, monospace;
+--ff-mono: monospace;
 
 /* Font-Sizes */
 /* https://royalfig.github.io/fluid-typography-calculator/ */
@@ -142,7 +142,7 @@ pre {
 max-width: 100%;
 overflow-x: auto;
 line-height: var(--lh-mono);
-font-size: var(--fs-sm);
+font-size: var(--fs-smlr);
 }
 
 pre,
@@ -160,6 +160,13 @@ img {
     margin: 0 auto;
 
 }
+/* CodeMirror */
+
+.CodeMirror {
+    height: auto !important;
+    font-size: var(--fs-smlr) !important;
+}
+
 
 /* Blog */
 body,
