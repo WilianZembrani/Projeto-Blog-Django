@@ -6,7 +6,7 @@ from blog.models import Post, Page
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.http import Http404
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.shortcuts import redirect, render
 
 PER_PAGE = 9
@@ -24,29 +24,21 @@ class PostListView(ListView):
 
         return context
 
+class PageDetailView(DetailView):
+    model = Page
+    template_name = 'blog/pages/page.html'
+    slug_field = 'slug'
+    context_object_name = 'page'
 
-def page(request, slug):
-    page_obj = (
-        Page.objects.filter()  #type: ignore
-        .filter(is_published=True)
-        .filter(slug=slug)
-        .first()
-    )
-
-    if page_obj is None:
-        raise Http404()
-
-    page_title = f'{page_obj.title} - Página - '
-
-
-    return render(
-        request,
-        'blog/pages/page.html',
-        {
-                'page': page_obj,
-                'page_title': page_title,
-        }
-    )
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        ctx = super().get_context_data(**kwargs)
+        page = self.get_object()
+        page_title =  f'{page.title} - Página -' #type:ignore
+        ctx.update({'page_title': page_title,})
+        return ctx
+    
+    def get_queryset(self) -> QuerySet[Any]:
+        return super().get_queryset().filter(is_published=True)
 
 
 def post(request, slug):
@@ -140,9 +132,6 @@ class TagListView(PostListView):
             'page_title':page_title,
         })
         return ctx
-
-from django.db.models import Q
-from django.shortcuts import redirect
 
 class SearchListView(PostListView):
     def __init__(self, *args, **kwargs):
